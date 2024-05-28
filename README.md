@@ -1,19 +1,25 @@
 # tubesprakmobile_penjualan_barang_di_toko
 
+## Cara clone project ke pc masing-masing
+
+1. buka file manager, trus navigasi ke tempat dimana folder project akan di simpan.
+2. klik kanan, lalu ```git bash here```.
+3. lalu ketikan ```git clone https://github.com/M-Ridho-Fauzan/tubesprakmobile_penjualan_barang_di_toko.git```.
+4. Enter, lalu tunggu.
+
 ## setiap maraneh mau ngoding / ngerjain tubes 
-0. git pull
-1. git branch MainActivty <- initeh halaman atau fitur yang mane mau kerjain bisa aja diganti sama (Fitur_Login)
+0. ```git pull```
+1. ```git branch HomeScreen``` <- initeh halaman atau fitur yang mane mau kerjain bisa aja diganti sama (Fitur_Login)
 jadi git branch itu buat masuk ke branch yang mane akan kerjain (JANGAN KERJAIN DI MAIN )
-2. git checkout MainActivty  <- (buat masuk ke branch nya)
+2. ```git checkout HomeScreen```  <- (buat masuk ke branch nya)
 3. baru kalian gas ngoding 
 ### JIKA INGIN NGE PUSH
-4. git add . <- (masi sama kaya yang biasa)
-5. git commit -m 'menyelesaikan halaman_home' <- contoh 
-6. git push -u origin MainActivty  <-(nama branch)
+4. ```git add .``` <- (masi sama kaya yang biasa)
+5. ```git commit -m 'menyelesaikan halaman_home'``` <- contoh 
+6. ```git push -u origin HomeScreen```  <-(nama branch)
     ```OMAT JANGAN MAIN LANGSUNG GIT PUSH```
-7. buka GitHub kalian terus klik di repo tubesprakmobile_penjualan_barang_di_toko ada button 
-compare & pull request 
-8 . nanti ada form buat ngasi tambahan kata baru aja create pull request 
+7. buka GitHub kalian terus klik di repo ```tubesprakmobile_penjualan_barang_di_toko``` ada button compare & pull request 
+8. nanti ada form buat ngasi tambahan kata baru aja create pull request 
 
 </br>
 
