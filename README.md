@@ -16,8 +16,8 @@ jadi git branch itu buat masuk ke branch yang mane akan kerjain (JANGAN KERJAIN 
 ### JIKA INGIN NGE PUSH
 4. ```git add .``` <- (masi sama kaya yang biasa)
 5. ```git commit -m 'menyelesaikan halaman_home'``` <- contoh 
-6. ```git push -u origin HomeScreen```  <-(nama branch)
-    ```OMAT JANGAN MAIN LANGSUNG GIT PUSH```
+6. ```git push -u origin HomeScreen```  <-(nama branch) (Jika error, inget bikin branch dulu, lalu checkout)
+```OMAT JANGAN MAIN LANGSUNG GIT PUSH```
 7. buka GitHub kalian terus klik di repo ```tubesprakmobile_penjualan_barang_di_toko``` ada button compare & pull request 
 8. nanti ada form buat ngasi tambahan kata baru aja create pull request 
 
