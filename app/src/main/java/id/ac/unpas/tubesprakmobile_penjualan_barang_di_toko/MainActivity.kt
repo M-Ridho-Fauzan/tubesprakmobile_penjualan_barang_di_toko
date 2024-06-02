@@ -3,44 +3,21 @@ package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import dagger.hilt.android.AndroidEntryPoint
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.MainScreen
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.theme.TubesPrakMobilePenjualanbarangditokoTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TubesPrakMobilePenjualanbarangditokoTheme {
+            TubesPrakMobilePenjualanbarangditokoTheme{
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                MainScreen(onExitClick = {
+                    finish()
+                })
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TubesPrakMobilePenjualanbarangditokoTheme {
-        Greeting("Android")
     }
 }

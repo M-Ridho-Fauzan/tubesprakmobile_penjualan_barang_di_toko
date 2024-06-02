@@ -1,13 +1,47 @@
+#[versions]
+#agp = "8.3.0"
+#kotlin = "1.9.22"
+#coreKtx = "1.10.1"  # Turunkan dari 1.13.1 ke versi yang kompatibel
+#junit = "4.13.2"
+#junitVersion = "1.1.5"
+#espressoCore = "3.5.1"
+#lifecycleRuntimeKtx = "2.7.0-alpha01"  # Turunkan dari 2.7.0 ke versi yang kompatibel
+#activityCompose = "1.7.0"  # Turunkan dari 1.9.0 ke versi yang kompatibel
+#composeBom = "2023.05.00"  # Turunkan dari 2024.05.00 ke versi yang kompatibel
+#kotlinKsp = "1.9.22-1.0.17"
+#room = "2.5.2"  # Turunkan dari 2.6.1 ke versi yang kompatibel
+#uuid = "0.4.0"
+#composeUI = "1.4.3"  # Turunkan dari 1.6.7 ke versi yang kompatibel
+#hilt = "2.48"  # Turunkan dari 2.50 ke versi yang kompatibel
+#androidxHilt = "1.0.0"  # Turunkan dari 1.2.0 ke versi yang kompatibel
+#retrofit = "2.9.0"
+#okhttp3 = "4.12.0"
+#sandwich = "2.0.6"
+#whatif = "1.1.4"
+#navigationCompose = "2.6.0"  # Turunkan dari 2.7.7 ke versi yang kompatibel
+
 [versions]
 agp = "8.3.0"
-kotlin = "1.9.0"
+kotlin = "1.9.22"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.8.0"
+lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.9.0"
-composeBom = "2023.08.00"
+composeBom = "2024.05.00"
+kotlinKsp = "1.9.22-1.0.17"
+room = "2.6.1"
+uuid = "0.4.0"
+composeUI = "1.6.7"
+hilt = "2.50"
+androidxHilt = "1.2.0"
+retrofit = "2.9.0"
+okhttp3 = "4.12.0"
+sandwich = "2.0.6"
+whatif = "1.1.4"
+navigationCompose = "2.7.7"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -15,8 +49,10 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "composeUI" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -24,8 +60,25 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-ksp = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+uuid = { group = "com.benasher44", name = "uuid", version.ref = "uuid" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-androidx-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidxHilt" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
+sandwich = { group = "com.github.skydoves", name = "sandwich", version.ref = "sandwich" }
+sandwich-retrofit = { group = "com.github.skydoves", name = "sandwich-retrofit", version.ref = "sandwich" }
+whatif = { group = "com.github.skydoves", name = "whatif", version.ref = "whatif" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
+daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
