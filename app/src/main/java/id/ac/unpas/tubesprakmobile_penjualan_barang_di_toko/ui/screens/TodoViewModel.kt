@@ -3,18 +3,17 @@ package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.base.LiveCoroutinesViewModel
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Todo
-import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.TodoDao
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.repositories.TodoRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class TodoViewModel @Inject constructor(private val todoRepository: TodoRepository) : LiveCoroutinesViewModel() {
+class  TodoViewModel @Inject constructor(private val todoRepository: TodoRepository)
+    : LiveCoroutinesViewModel() {
 
     private val _isDone: MutableLiveData<Boolean> = MutableLiveData(false)
     val isDone: LiveData<Boolean> = _isDone

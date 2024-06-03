@@ -5,13 +5,14 @@ import com.skydoves.sandwich.message
 import com.skydoves.sandwich.suspendOnError
 import com.skydoves.sandwich.suspendOnException
 import com.skydoves.sandwich.suspendOnSuccess
-import com.skydoves.whatif.whatIf
 import com.skydoves.whatif.whatIfNotNull
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Todo
-import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.TodoApi
-import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.TodoDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.apiClient.TodoApi
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.TodoDao
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+
+// Adalah tempat pengaturan CRUD
 
 class TodoRepository @Inject constructor(private val api: TodoApi, private val dao: TodoDao) {
 

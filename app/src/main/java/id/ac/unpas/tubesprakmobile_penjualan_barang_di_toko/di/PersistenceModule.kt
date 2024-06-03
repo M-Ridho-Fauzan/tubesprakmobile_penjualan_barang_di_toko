@@ -8,8 +8,12 @@ import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.AppData
 import javax.inject.Singleton
 import android.app.Application
 import androidx.room.Room
-import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.TodoDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.ItemDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.OrderDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.OrderItemDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.TodoDao
 
+//Class ini menginjeksi object2 yang di butuhkan, dan di wakili oleh fungsi2
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -26,5 +30,23 @@ object PersistenceModule {
     @Singleton
     fun provideTodoDao(appDatabase: AppDatabase) : TodoDao {
         return appDatabase.todoDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideItemDao(appDatabase: AppDatabase) : ItemDao {
+        return appDatabase.itemDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrderDao(appDatabase: AppDatabase) : OrderDao {
+        return appDatabase.orderDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrderItemDao(appDatabase: AppDatabase) : OrderItemDao {
+        return appDatabase.orderItemDao()
     }
 }
