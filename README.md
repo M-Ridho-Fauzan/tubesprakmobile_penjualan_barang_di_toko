@@ -13,7 +13,7 @@
 jadi git branch itu buat masuk ke branch yang mane akan kerjain (JANGAN KERJAIN DI MAIN )
 2. ```git checkout HomeScreen```  <- (buat masuk ke branch nya)
 3. baru kalian gas ngoding 
-### JIKA INGIN NGE PUSH
+##### JIKA INGIN NGE PUSH
 4. ```git add .``` <- (masi sama kaya yang biasa)
 5. ```git commit -m 'menyelesaikan halaman_home'``` <- contoh 
 6. ```git push -u origin HomeScreen```  <-(nama branch) (Jika error, inget bikin branch dulu, lalu checkout)

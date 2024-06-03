@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
@@ -44,12 +46,19 @@ fun LoginScreen(modifier: Modifier = Modifier, onLoginClick: () -> Unit) {
             OutlinedTextField(
                 label = { Text(text = "Password") },
                 modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 visualTransformation = PasswordVisualTransformation(),
                 value = password.value, onValueChange = {
                     password.value = it
                 })
 
             Row {
+                Button(modifier = Modifier.weight(5f), onClick = {
+
+                }) {
+                    Text(text = "Batal")
+                }
+//                ========
                 Button(modifier = Modifier.weight(5f), onClick = {
                     if (username.value == "admin" && password.value == "admin") {
                         onLoginClick()
@@ -59,12 +68,6 @@ fun LoginScreen(modifier: Modifier = Modifier, onLoginClick: () -> Unit) {
 
                 }) {
                     Text(text = "Login")
-                }
-
-                Button(modifier = Modifier.weight(5f), onClick = {
-
-                }) {
-                    Text(text = "Batal")
                 }
             }
         }

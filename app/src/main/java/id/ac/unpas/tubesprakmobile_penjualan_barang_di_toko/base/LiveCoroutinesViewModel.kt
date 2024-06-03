@@ -6,6 +6,8 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 
+// Ini adalah base class dari view model ke TodoViewModel
+
 abstract class LiveCoroutinesViewModel : ViewModel() {
 
     inline fun<T> launchOnViewModelScope(crossinline block: suspend () -> LiveData<T>): LiveData<T> {

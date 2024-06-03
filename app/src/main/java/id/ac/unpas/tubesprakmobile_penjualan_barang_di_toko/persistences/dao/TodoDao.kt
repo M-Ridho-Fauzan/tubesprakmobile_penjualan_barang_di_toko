@@ -1,4 +1,4 @@
-package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences
+package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
