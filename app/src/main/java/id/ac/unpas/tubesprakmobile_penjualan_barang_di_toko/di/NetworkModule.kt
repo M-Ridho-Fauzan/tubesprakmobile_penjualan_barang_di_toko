@@ -32,7 +32,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://ppm-api.nimbus.biz.id/api/public/")
+            .baseUrl("https://ppm-api.nimbus.biz.id/api/public/shop/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()
