@@ -38,7 +38,7 @@ jadi git branch itu buat masuk ke branch yang mane akan kerjain (JANGAN KERJAIN 
 
 # Spesifikasi Tugas Besar Praktikum Pemrograman Mobile
 
-## Ketentuan Pengerjaan Tugas Besar
+## Ketentuan Pengerjaan Tugas Besar 
 
 1. Setiap kelompok terdiri dari 3-5 orang.
 2. Setiap anggota kelompok 3. berkontribusi dan memiliki tugas yang dikerjakan.
