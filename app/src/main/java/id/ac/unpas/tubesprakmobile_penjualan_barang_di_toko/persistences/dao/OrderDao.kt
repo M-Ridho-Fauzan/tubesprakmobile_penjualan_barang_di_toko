@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Item
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Order
 
@@ -35,7 +36,7 @@ interface OrderDao {
 
     @Query("select * from 'order' where id = :id")
     suspend fun find(id: String): Order?
-
+    // Todo
     @Delete
-    suspend fun delete(item: Order)
+    suspend fun delete(order: Order)
 }

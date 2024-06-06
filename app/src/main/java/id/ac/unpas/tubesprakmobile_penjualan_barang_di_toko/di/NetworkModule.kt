@@ -15,15 +15,102 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+//@Module
+//@InstallIn(SingletonComponent::class)
+//object NetworkModule {
+//
+////    @Provides
+////    @Singleton
+////    fun provideAuthInterceptor(): AuthInterceptor {
+////        return AuthInterceptor()
+////    }
+//
+////    @Provides
+////    @Singleton
+////    fun provideRequestInterceptor(): RequestInterceptor {
+////        return RequestInterceptor()
+////    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideOkHttpClient(): OkHttpClient {
+//        return OkHttpClient.Builder()
+//            .addInterceptor(RequestInterceptor())
+//            .build()
+//    }
+////    @Provides
+////    @Singleton
+////    fun provideOkHttpClient(
+////        requestInterceptor: RequestInterceptor,
+////        authInterceptor: AuthInterceptor
+////    ): OkHttpClient {
+////        return OkHttpClient.Builder()
+////            .addInterceptor(requestInterceptor)
+////            .addInterceptor(authInterceptor)
+////            .build()
+////    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+//        return Retrofit.Builder()
+//            .client(okHttpClient)
+//            .baseUrl("https://ppm-api.nimbus.biz.id/api/public/shop/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+//            .build()
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideTodoApi(retrofit: Retrofit): TodoApi {
+//        return retrofit.create(TodoApi::class.java)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideItemApi(retrofit: Retrofit): ItemApi {
+//        return retrofit.create(ItemApi::class.java)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideOrderApi(retrofit: Retrofit): OrderApi {
+//        return retrofit.create(OrderApi::class.java)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideOrderItemApi(retrofit: Retrofit): OrderItemApi {
+//        return retrofit.create(OrderItemApi::class.java)
+//    }
+//}
+
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideAuthInterceptor(): AuthInterceptor {
+        return AuthInterceptor("1|83dpQakhGvYMNOmyD60PUt4l8LNTaQKoRn7sNQZZ9413a3ee")
+    }
+
+    @Provides
+    @Singleton
+    fun provideRequestInterceptor(): RequestInterceptor {
+        return RequestInterceptor()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        requestInterceptor: RequestInterceptor,
+        authInterceptor: AuthInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(RequestInterceptor())
+            .addInterceptor(requestInterceptor)
+            .addInterceptor(authInterceptor)
             .build()
     }
 
@@ -32,7 +119,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://ppm-api.nimbus.biz.id/api/public/shop/")
+            .baseUrl("https://ppm-api.nimbus.biz.id/api/protected/shop/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()

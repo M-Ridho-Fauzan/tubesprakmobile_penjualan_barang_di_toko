@@ -1,11 +1,13 @@
 package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
@@ -25,12 +27,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.R
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.itemScreen.FormItemScreen
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.itemScreen.ListItemScreen
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.orderScreen.CheckoutScreen
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.orderScreen.OrderScreen
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.theme.abuGelap
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.theme.oren
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,6 +95,18 @@ fun MainScreen(onExitClick: () -> Unit) {
                     Row (modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically) {
+//                        ==============
+                        Image(
+                            painterResource(id = R.drawable.baseline_home_24),
+                            contentDescription = "Home",
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
+                            modifier = Modifier
+                                .clickable {
+                                    navController.navigate(NavScreen.Home.route)
+                                }
+                                .weight(0.5f)
+                        )
+//                        ===============
                         Image(
                             painterResource(id = R.drawable.baseline_add_24),
                             contentDescription = "Tambah",
@@ -96,8 +117,21 @@ fun MainScreen(onExitClick: () -> Unit) {
                                 }
                                 .weight(0.5f)
                         )
+//                        ============== Utama
                         Image(
-                            painterResource(id = R.drawable.baseline_remove_red_eye_24),
+                            painterResource(id = R.drawable.baseline_add_shopping_cart_24),
+                            contentDescription = "Tambah Keranjang",
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
+                            modifier = Modifier
+                                .clickable {
+                                    navController.navigate(NavScreen.Chart.route)
+
+                                }
+                                .weight(0.5f)
+                        )
+//                        ==============
+                        Image(
+                            painterResource(id = R.drawable.baseline_list_data_24),
                             contentDescription = "Lihat",
                             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
                             modifier = Modifier
@@ -106,10 +140,21 @@ fun MainScreen(onExitClick: () -> Unit) {
                                 }
                                 .weight(0.5f)
                         )
+//                        ==============
+                        Image(
+                            painterResource(id = R.drawable.baseline_history_24),
+                            contentDescription = "History",
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
+                            modifier = Modifier
+                                .clickable {
+//                                    navController.navigate(NavScreen.List.route)
+                                }
+                                .weight(0.5f)
+                        )
+//                        ==============
                     }
                 }
             }
-
         },
         floatingActionButton = {
             if (currentRoute.value == NavScreen.Home.route) {
@@ -137,9 +182,11 @@ fun MainScreen(onExitClick: () -> Unit) {
                     navController.navigate(NavScreen.List.route)
                 }
             }
+
             composable(NavScreen.List.route) {
                 currentRoute.value = NavScreen.List.route
-                ListTodoScreen(modifier = Modifier.padding(innerPadding), onDelete = {
+                ListItemScreen(modifier = Modifier.padding(innerPadding),
+                    onDelete = {
                     scope.launch {
                         snackBarHostState.showSnackbar("Data telah dihapus", "OK")
                     }
@@ -148,17 +195,29 @@ fun MainScreen(onExitClick: () -> Unit) {
                     navController.navigate("${NavScreen.Edit.route}/$id")
                 }
             }
+
+            composable(NavScreen.Chart.route) {
+                currentRoute.value = NavScreen.Chart.route
+                OrderScreen(modifier = Modifier.padding(innerPadding), navController = navController)
+            }
+
+//            composable(NavScreen.Checkout.route) {
+//                currentRoute.value = NavScreen.Checkout.route
+//                CheckoutScreen(modifier = Modifier.padding())
+//            }
+
             composable(NavScreen.Add.route) {
                 currentRoute.value = NavScreen.Add.route
-                FormTodoScreen(modifier = Modifier.padding(innerPadding))
+                FormItemScreen(modifier = Modifier.padding(innerPadding))
             }
+
             composable(NavScreen.Edit.routeWithArgument,
                 arguments = listOf(navArgument(NavScreen.Edit.argument0) { type = NavType.StringType }))
-                { backStackEntry ->
+            { backStackEntry ->
                 val id = backStackEntry.arguments?.getString(NavScreen.Edit.argument0) ?: return@composable
 
                 currentRoute.value = NavScreen.Edit.route
-                FormTodoScreen(modifier = Modifier.padding(innerPadding), id = id)
+                FormItemScreen(modifier = Modifier.padding(innerPadding), id = id)
             }
         }
     }
