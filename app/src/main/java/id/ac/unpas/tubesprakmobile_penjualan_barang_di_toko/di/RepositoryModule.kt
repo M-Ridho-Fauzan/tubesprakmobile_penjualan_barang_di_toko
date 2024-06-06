@@ -68,10 +68,12 @@ object RepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideOrderRepository(
+        orderApi: OrderApi,
+        orderItemApi: OrderItemApi,
         orderDao: OrderDao,
-        orderApi: OrderApi
+        orderItemDao: OrderItemDao
     ): OrderRepository {
-        return OrderRepository(orderApi, orderDao)
+        return OrderRepository(orderApi, orderItemApi, orderDao, orderItemDao)
     }
 
     @Provides

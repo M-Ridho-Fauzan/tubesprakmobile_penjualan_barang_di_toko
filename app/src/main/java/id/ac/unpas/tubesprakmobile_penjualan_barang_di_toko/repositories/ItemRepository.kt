@@ -7,10 +7,15 @@ import com.skydoves.sandwich.suspendOnException
 import com.skydoves.sandwich.suspendOnSuccess
 import com.skydoves.whatif.whatIfNotNull
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Item
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Todo
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.apiClient.ItemApi
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.apiClient.TodoApi
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.ItemDao
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao.TodoDao
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+
+// Adalah tempat pengaturan CRUD
 
 class ItemRepository @Inject constructor(private val api: ItemApi, private val dao: ItemDao) {
 
@@ -37,11 +42,11 @@ class ItemRepository @Inject constructor(private val api: ItemApi, private val d
             }
     }
 
-    suspend fun insert(item: Item,
+    suspend fun insert(items: Item,
                        onSuccess: () -> Unit,
                        onError: (String) -> Unit) {
-        dao.upsert(item)
-        api.insert(item)
+        dao.upsert(items)
+        api.insert(items)
             .suspendOnSuccess {
                 data.whatIfNotNull {
                     if (it.success) {
@@ -59,11 +64,11 @@ class ItemRepository @Inject constructor(private val api: ItemApi, private val d
             }
     }
 
-    suspend fun update(item: Item,
+    suspend fun update(items: Item,
                        onSuccess: () -> Unit,
                        onError: (String) -> Unit) {
-        dao.upsert(item)
-        api.update(item.id, item)
+        dao.upsert(items)
+        api.update(items.id, items)
             .suspendOnSuccess {
                 data.whatIfNotNull {
                     if (it.success) {

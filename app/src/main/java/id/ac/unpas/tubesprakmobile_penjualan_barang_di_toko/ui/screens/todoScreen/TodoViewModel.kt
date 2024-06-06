@@ -1,4 +1,4 @@
-package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens
+package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.todoScreen
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -30,6 +30,7 @@ class  TodoViewModel @Inject constructor(private val todoRepository: TodoReposit
     private val _todo: MutableLiveData<Boolean> = MutableLiveData(false)
     val todos : LiveData<List<Todo>> = _todo.switchMap {
         _isLoading.postValue(true)
+
         launchOnViewModelScope {
             todoRepository.loadItems(
                 onSuccess = {

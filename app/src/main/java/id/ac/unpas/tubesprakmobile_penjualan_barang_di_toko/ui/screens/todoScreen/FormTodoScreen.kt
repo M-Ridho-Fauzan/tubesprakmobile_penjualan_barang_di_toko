@@ -1,4 +1,4 @@
-package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens
+package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.todoScreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

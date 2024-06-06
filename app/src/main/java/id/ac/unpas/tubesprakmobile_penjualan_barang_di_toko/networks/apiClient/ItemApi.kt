@@ -14,17 +14,17 @@ import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.GetResponse
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.networks.PostResponseItem
 
 interface ItemApi {
-    @GET("items")
+    @GET("item")
     suspend fun findAll(): ApiResponse<GetResponsesItem>
 
-    @POST("items")
+    @POST("item")
     @Headers("Content-Type: application/json")
     suspend fun insert(@Body item: Item): ApiResponse<PostResponseItem>
 
-    @PUT("items/{id}")
+    @PUT("item/{id}")
     @Headers("Content-Type: application/json")
     suspend fun update(@Path("id") id: String, @Body item: Item): ApiResponse<PostResponseItem>
 
-    @DELETE("items/{id}")
+    @DELETE("item/{id}")
     suspend fun delete(@Path("id") id: String): ApiResponse<DeleteResponseItem>
 }

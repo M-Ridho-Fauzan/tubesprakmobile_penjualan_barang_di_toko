@@ -38,3 +38,17 @@ interface OrderItemDao {
     @Delete
     suspend fun delete(item: OrderItem)
 }
+
+//package id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.persistences.dao
+//
+//import androidx.room.Dao
+//import androidx.room.Insert
+//import androidx.room.OnConflictStrategy
+//import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.OrderItem
+//
+//@Dao
+//interface OrderItemDao {
+//
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun upsert(orderItems: List<OrderItem>)
+//}
