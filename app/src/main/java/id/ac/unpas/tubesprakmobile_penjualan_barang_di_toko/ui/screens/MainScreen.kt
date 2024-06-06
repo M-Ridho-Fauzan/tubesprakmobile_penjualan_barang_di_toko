@@ -47,7 +47,7 @@ fun MainScreen(onExitClick: () -> Unit) {
     Scaffold(
         topBar = {
                  TopAppBar(
-                     title = { Text(text = "Agenda") },
+                     title = { Text(text = "Qasir") },
                      navigationIcon = {
                          if (currentRoute.value != NavScreen.Login.route) {
                              Image(
