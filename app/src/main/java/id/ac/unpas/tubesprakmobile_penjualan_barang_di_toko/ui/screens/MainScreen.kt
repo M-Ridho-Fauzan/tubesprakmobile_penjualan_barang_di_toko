@@ -20,6 +20,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -28,15 +30,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.R
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.models.Item
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.itemScreen.FormItemScreen
+import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.itemScreen.ItemViewModel
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.itemScreen.ListItemScreen
-import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.orderScreen.CheckoutScreen
+//import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.orderScreen.CheckoutScreen
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.screens.orderScreen.OrderScreen
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.theme.abuGelap
 import id.ac.unpas.tubesprakmobile_penjualan_barang_di_toko.ui.theme.oren
@@ -45,6 +50,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(onExitClick: () -> Unit) {
+
     val navController = rememberNavController()
     val currentRoute = remember {
         mutableStateOf("")
@@ -56,11 +62,11 @@ fun MainScreen(onExitClick: () -> Unit) {
     Scaffold(
         topBar = {
                  TopAppBar(
-                     title = { Text(text = "Agenda") },
+                     title = { Text(text = "Kasheer App") },
                      navigationIcon = {
                          if (currentRoute.value != NavScreen.Login.route) {
                              Image(
-                                 painterResource(id = R.drawable.baseline_home_24),
+                                 painterResource(id = R.drawable.baseline_bungalow_24),
                                  contentDescription = "Menu",
                                  colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
                                  modifier = Modifier.clickable {
@@ -168,6 +174,8 @@ fun MainScreen(onExitClick: () -> Unit) {
             SnackbarHost(hostState = snackBarHostState)
         }
     ) { innerPadding ->
+        val itemViewModel: ItemViewModel = hiltViewModel()
+
         NavHost(navController = navController, startDestination = NavScreen.Login.route) {
 
             composable(NavScreen.Login.route) {
@@ -178,7 +186,8 @@ fun MainScreen(onExitClick: () -> Unit) {
             }
             composable(NavScreen.Home.route) {
                 currentRoute.value = NavScreen.Home.route
-                HomeScreen(navController = navController, modifier = Modifier.padding(innerPadding)) {
+                val items by itemViewModel.items.observeAsState(listOf())
+                HomeScreen(navController = navController, items = items, modifier = Modifier.padding(innerPadding)) {
                     navController.navigate(NavScreen.List.route)
                 }
             }

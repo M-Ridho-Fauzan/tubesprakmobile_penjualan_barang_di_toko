@@ -39,7 +39,7 @@ fun OrderScreen(modifier: Modifier = Modifier, navController: NavController) {
                     onEditClick = {}, // Karena tidak diperlukan pada screen ini
                     onDeleteClick = {}, // Karena tidak diperlukan pada screen ini
                     onAddChartClick = {
-                        if (isSelected.value) {
+                        if (isSelected.value == true) {
                             selectedItems.remove(item)
                         } else {
                             selectedItems.add(item)
@@ -56,7 +56,7 @@ fun OrderScreen(modifier: Modifier = Modifier, navController: NavController) {
                 }) {
                     Icon(
                         painter = painterResource(
-                            id = if (isSelected.value) R.drawable.baseline_checkout_24 else R.drawable.baseline_checkout2_24
+                            id = if (isSelected.value) {R.drawable.baseline_checkout_24} else {R.drawable.baseline_checkout2_24}
                         ),
                         contentDescription = "Add to cart"
                     )

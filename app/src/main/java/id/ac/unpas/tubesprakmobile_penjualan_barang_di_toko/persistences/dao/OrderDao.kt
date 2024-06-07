@@ -26,7 +26,7 @@ interface OrderDao {
     suspend fun getById(id: String): Order?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(vararg items: Order)
+    suspend fun upsert(vararg order: Order)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(list: List<Order>)
@@ -36,7 +36,7 @@ interface OrderDao {
 
     @Query("select * from 'order' where id = :id")
     suspend fun find(id: String): Order?
-    // Todo
+
     @Delete
     suspend fun delete(order: Order)
 }

@@ -18,9 +18,3 @@ data class Order(
     val paymentMethod: String,//cash, credit card, debit card, transfer, e-wallet
     val remarks: String,
 )
-
-//"id": "30be2ef3-b43d-4ba8-b1e9-5f40378a1714",
-//"order_date": "2024-05-26",
-//"total_price": 20000,
-//"payment_method": "cash", //cash, credit card, debit card, transfer, e-wallet
-//"remarks": "paid"

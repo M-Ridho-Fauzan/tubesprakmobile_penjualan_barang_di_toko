@@ -78,7 +78,7 @@ fun ListItemScreen(
         if (it) {
             title.value = "Loading..."
         } else {
-            title.value = "TODO"
+            title.value = ""
         }
     }
 
