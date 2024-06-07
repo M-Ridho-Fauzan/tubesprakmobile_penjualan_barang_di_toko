@@ -17,7 +17,6 @@ fun ItemRow(
     onDeleteClick: (String) -> Unit = {},
     onAddChartClick: (String) -> Unit = {},
     showEditDeleteButtons: Boolean = true,
-//    isSelected: Boolean = true
 ) {
     Row {
         Text(modifier = Modifier.weight(2f), text = item.name)
@@ -51,19 +50,6 @@ fun ItemRow(
                             onAddChartClick(item.id)
                         }
                 )
-//            } else {
-//                Icon(
-//                    painterResource(id = R.drawable.baseline_checkout2_24), // Ganti dengan ikon yang sesuai
-//                    "Add Chart",
-//                    modifier = Modifier
-//                        .weight(1f)
-//                        .clickable {
-//                            if (onAddChartClick != null) {
-//                                onAddChartClick(item.id)
-//                            }
-//                        }
-//                )
-//            }
 
         }
     }
